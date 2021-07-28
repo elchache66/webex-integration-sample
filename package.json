@@ -2,7 +2,7 @@
   "name": "webex-integration-sample",
   "version": "3.1.1",
   "description": "an example of Webex Integration (OAuth flow) in Node?js",
-  "main": "server.js",
+  "main": "widget.js",
   "scripts": {
     "start": "node server.js"
   },
