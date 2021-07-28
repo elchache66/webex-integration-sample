@@ -292,7 +292,8 @@ function oauthFlowCompleted(access_token, res) {
     //      "created": "2016-02-04T15:46:20.321Z"
     //    }
     const json = JSON.parse(body);
-    if (!json || !json.displayName) {
+    //  if (!json || !json.displayName) {
+    if (!json) {
       debug(
         "could not parse Person details: bad json payload or could not find a displayName."
       );
@@ -306,7 +307,8 @@ function oauthFlowCompleted(access_token, res) {
     //res.send("<h1>OAuth Integration example for Webex (static HTML)</h1><p>So happy to meet, " + json.displayName + " !</p>");
     // Current code leverages an EJS template:
     const str = read(join(__dirname, "/www/list-rooms.ejs"), "utf8");
-    const compiled = ejs.compile(str)({ displayName: json.displayName });
+    //  const compiled = ejs.compile(str)({ displayName: json.displayName });
+    const compiled = ejs.compile(str)({ rooms: json.rooms });
     res.send(compiled);
   });
 }
