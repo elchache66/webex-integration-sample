@@ -251,7 +251,7 @@ function oauthFlowCompleted(access_token, res) {
   const options = {
     method: "GET",
     //  url: "https://api.ciscospark.com/v1/people/me",
-    url: "https://webexapis.com/v1/rooms",
+    url: "https://api.ciscospark.com/v1/rooms",
     headers: {
       authorization: "Bearer " + access_token,
     },
@@ -276,7 +276,7 @@ function oauthFlowCompleted(access_token, res) {
           response.statusCode
       );
       res.send(
-        "<h1>OAuth Integration could not complete</h1><p>Sorry, could not retreive your Webex Teams account details. Try again...</p>"
+        "<h1>OAuth Integration could not complete</h1><p>Lo siento, could not retreive your Webex Teams account details. Try again...</p>"
       );
       return;
     }
