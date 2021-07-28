@@ -301,10 +301,10 @@ function oauthFlowCompleted(access_token, res) {
       return;
     }
 
-    // Uncomment to send feedback via static HTML code
+    // Uncomment to send feedback via static HTML code display-name.ejs
     //res.send("<h1>OAuth Integration example for Webex (static HTML)</h1><p>So happy to meet, " + json.displayName + " !</p>");
     // Current code leverages an EJS template:
-    const str = read(join(__dirname, "/www/display-name.ejs"), "utf8");
+    const str = read(join(__dirname, "/www/rooms-list.ejs"), "utf8");
     const compiled = ejs.compile(str)({ displayName: json.displayName });
     res.send(compiled);
   });
