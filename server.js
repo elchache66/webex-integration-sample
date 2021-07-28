@@ -250,7 +250,8 @@ function oauthFlowCompleted(access_token, res) {
   // Retreive user name: GET https://api.ciscospark.com/v1/people/me
   const options = {
     method: "GET",
-    url: "https://api.ciscospark.com/v1/people/me",
+    //  url: "https://api.ciscospark.com/v1/people/me",
+    url: "https://webexapis.com/v1/rooms",
     headers: {
       authorization: "Bearer " + access_token,
     },
