@@ -77,6 +77,8 @@ const str = read(join(__dirname, "/www/index.ejs"), "utf8");
 const ejs = require("ejs");
 const compiled = ejs.compile(str)({ link: initiateURL }); // inject the link into the template
 
+var sessionAccess_token;
+
 app.get("/index.html", function (req, res) {
   debug("serving the integration home page (generated from an EJS template)");
   res.send(compiled);
@@ -87,7 +89,14 @@ app.get("/", function (req, res) {
 });
 
 app.get("/pregunta/a", function (req, res) {
-  res.send("Hello from " + req.query.preguntaa + "!");
+  const str = read(join(__dirname, "/www/webex-teams.ejs"), "utf8");
+  //  const compiled = ejs.compile(str)({ displayName: json.displayName });
+  const compiled = ejs.compile(str)({
+    access_token: sessionAccess_token,
+    mailTo: req.query.preguntaa,
+  });
+  res.send(compiled);
+  // res.send("Hello from " + req.query.preguntaa + "!");
 });
 
 // -------------------------------------------------------------
@@ -267,7 +276,7 @@ function storeTokens(
 ) {
   // Store the token in some secure backend
   debug("Para hacer: almacenar tokens y fechas de vencimiento");
-
+  sessionAccess_token = access_token;
   // For demo purpose, we'll NOW ask for a refreshed token
   //refreshAccessToken(refresh_token);
 }
