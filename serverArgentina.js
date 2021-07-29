@@ -86,8 +86,8 @@ app.get("/", function (req, res) {
   res.redirect("/index.html");
 });
 
-app.get("/example/a", function (req, res) {
-  res.send("Hello from A!");
+app.get("/pregunta/a", function (req, res) {
+  res.send("Hello from " + req.query.pregunta + "!");
 });
 
 // -------------------------------------------------------------
@@ -227,13 +227,13 @@ app.get("/oauth", function (req, res) {
     debug("OAuth flow completed, fetched tokens: " + JSON.stringify(json));
 
     // [Optional] Store tokens for future use
-    /*     storeTokens(
+    storeTokens(
       json.access_token,
       json.expires_in,
       json.refresh_token,
       json.refresh_token_expires_in
     );
- */
+
     // OAuth flow has completed
     oauthFlowCompleted(json.access_token, res);
   });
