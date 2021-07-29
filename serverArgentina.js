@@ -87,7 +87,7 @@ app.get("/", function (req, res) {
 });
 
 app.get("/pregunta/a", function (req, res) {
-  res.send("Hello from " + req.query.pregunta + "!");
+  res.send("Hello from " + req.query.preguntaa + "!");
 });
 
 // -------------------------------------------------------------
