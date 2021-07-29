@@ -30,7 +30,7 @@ const clientId =
 const clientSecret =
   process.env.CLIENT_SECRET ||
   "81772d83ee75a5835d2b19a1c9e95b47bf6618a3a736e361c5324dc18e7183e8";
-const scopes = process.env.SCOPES || "spark:people_read spark:rooms_read"; // supported scopes are documented at: https://developer.webex.com/add-integration.html, the scopes separator is a space, example: "spark:people_read spark:rooms_read"
+const scopes = process.env.SCOPES || "spark:all"; // supported scopes are documented at: https://developer.webex.com/add-integration.html, the scopes separator is a space, example: "spark:people_read spark:rooms_read"
 
 // Compute redirect URI where your integration is waiting for Webex cloud to redirect and send the authorization code
 // unless provided via the REDIRECT_URI variable
@@ -223,13 +223,13 @@ app.get("/oauth", function (req, res) {
     debug("OAuth flow completed, fetched tokens: " + JSON.stringify(json));
 
     // [Optional] Store tokens for future use
-    storeTokens(
+    /*     storeTokens(
       json.access_token,
       json.expires_in,
       json.refresh_token,
       json.refresh_token_expires_in
     );
-
+ */
     // OAuth flow has completed
     oauthFlowCompleted(json.access_token, res);
   });
