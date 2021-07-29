@@ -15,3 +15,18 @@ a.button {
   height: 170px;
   float: left;
 }
+.body-column-right {
+  width: 650px;
+  float: right;
+  font-size: 12px !important;
+}
+.body-column-right-main {
+  float: left;
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+.header-big {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
