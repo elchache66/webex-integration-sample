@@ -86,6 +86,10 @@ app.get("/", function (req, res) {
   res.redirect("/index.html");
 });
 
+app.get("/example/a", function (req, res) {
+  res.send("Hello from A!");
+});
+
 // -------------------------------------------------------------
 // Statically serve the "/www" directory
 // WARNING: Do not move the 2 lines of code below, as we need this exact precedance order for the static and dynamic HTML generation to work correctly all together
