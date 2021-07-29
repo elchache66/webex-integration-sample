@@ -259,7 +259,7 @@ function oauthFlowCompleted(access_token, res) {
   };
 
   request(options, function (error, response, body) {
-    /*     if (error) {
+    if (error) {
       debug(
         "could not reach Webex API to retreive Person's details, error: " +
           error
@@ -268,9 +268,9 @@ function oauthFlowCompleted(access_token, res) {
         "<h1>OAuth Integration could not complete</h1><p>Sorry, could not retreive your Webex Teams account details. Try again...</p>"
       );
       return;
-    } */
+    }
 
-    /*     // Check the call is successful
+    // Check the call is successful
     if (response.statusCode != 200) {
       debug(
         "could not retreive your details, /people/me returned: " +
@@ -280,7 +280,7 @@ function oauthFlowCompleted(access_token, res) {
         "<h1>OAuth Integration could not complete</h1><p>Lo siento, could not retreive your Webex Teams account details. Try again...</p>"
       );
       return;
-    } */
+    }
 
     // Check JSON payload is compliant with specs https://api.ciscospark.com/v1/people/me
     //    {
@@ -294,7 +294,7 @@ function oauthFlowCompleted(access_token, res) {
     //    }
     const json = JSON.parse(body);
     //  if (!json || !json.displayName) {
-    /*     if (!json) {
+    if (!json) {
       debug(
         "could not parse Person details: bad json payload or could not find a displayName."
       );
@@ -302,9 +302,9 @@ function oauthFlowCompleted(access_token, res) {
         "<h1>OAuth Integration could not complete</h1><p>Sorry, could not retreive your Webx Teams account details. Try again...</p>"
       );
       return;
-    } */
+    }
 
-    /*     debug(json); */
+    debug(json);
     // Uncomment to send feedback via static HTML code display-name.ejs
     //res.send("<h1>OAuth Integration example for Webex (static HTML)</h1><p>So happy to meet, " + json.displayName + " !</p>");
     // Current code leverages an EJS template:
@@ -324,10 +324,10 @@ function storeTokens(
   refresh_token_expires_in
 ) {
   // Store the token in some secure backend
-  debug("TODO: store tokens and expiration dates");
+  debug("Para hacer: almacenar tokens y fechas de vencimiento");
 
   // For demo purpose, we'll NOW ask for a refreshed token
-  refreshAccessToken(refresh_token);
+  //refreshAccessToken(refresh_token);
 }
 
 //
@@ -367,12 +367,12 @@ function refreshAccessToken(refresh_token) {
       !json.refresh_token ||
       !json.refresh_token_expires_in
     ) {
-      debug("could not parse response");
+      debug("no se pudo analizar la respuesta");
       return;
     }
 
     // Refresh token obtained
-    debug("newly issued tokens: " + JSON.stringify(json));
+    debug("tokens recién emitidos: " + JSON.stringify(json));
   });
 }
 
